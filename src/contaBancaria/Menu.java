@@ -2,6 +2,7 @@ package contaBancaria;
 
 import java.util.Scanner;
 
+import contaBancaria.model.Conta;
 import contaBancaria.util.Cores;
 
 public class Menu {
@@ -11,6 +12,32 @@ public class Menu {
 		Scanner leia = new Scanner(System.in);
 
 		int opcao;
+		
+		//Atualizações do pacote model//
+		
+		// Teste da Classe Conta
+		
+		//Instanciar novo objeto da classe conta pelo método construtivo
+        Conta c1 = new Conta(1, 123, 1, "Adriana Sanches", 10000.0f);
+        
+        //visualizando os dados da conta atual
+        c1.visualizar();
+        
+        //Modificando DIRETAMENTE o Saldo da conta e o nome do titular
+        c1.setSaldo(15000.0f);
+	    c1.setTitular("Maria Joaquina");
+		c1.visualizar();
+		
+		
+		//Sacando
+        c1.sacar(12000.0f);
+		c1.visualizar();
+		
+		
+		//Depositando
+        c1.depositar(5000.0f);
+		c1.visualizar();
+
 
 		while (true) {
 
