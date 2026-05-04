@@ -1,6 +1,6 @@
 package contaBancaria.model;
 
-public class Conta {
+public abstract class Conta {
 	
 	private int numero;
 	private int agencia;
@@ -74,7 +74,7 @@ public class Conta {
 	public void depositar(float valor) { //depositanto
 		this.saldo = this.saldo + valor;
 	}
-	//Metodos que não são Static precisão ser chamados atrelados a uma variável na classe
+	//Metodos que não são Static precisam ser chamados atrelados a uma variável na classe
 	//Essa variável deve ser declarada no main para que seja a facilitadora que permite acessar
 	//os "serviços" que a classe oferece.
 	public void visualizar() {

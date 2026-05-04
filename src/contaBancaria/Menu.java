@@ -1,20 +1,25 @@
 package contaBancaria;
 
 import java.util.Scanner;
-
 import contaBancaria.model.Conta;
+import contaBancaria.model.ContaCorrente; //Importando do pacote de contasModelo
+import contaBancaria.model.ContaPoupanca;
 import contaBancaria.util.Cores;
 
-public class Menu {
 
+
+public class Menu {
+	
+	private static final Scanner leia = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 
-		Scanner leia = new Scanner(System.in);
 
 		int opcao;
 		
 		//Atualizações do pacote model//
 		
+		/* Teste retirado dado classe conta ser abstrata
 		// Teste da Classe Conta
 		
 		//Instanciar novo objeto da classe conta pelo método construtivo
@@ -23,12 +28,13 @@ public class Menu {
         //visualizando os dados da conta atual
         c1.visualizar();
         
+        /*
         //Modificando DIRETAMENTE o Saldo da conta e o nome do titular
         c1.setSaldo(15000.0f);
 	    c1.setTitular("Maria Joaquina");
 		c1.visualizar();
-		
-		
+		*/ //Testes da classe conta
+		/*
 		//Sacando
         c1.sacar(12000.0f);
 		c1.visualizar();
@@ -37,7 +43,27 @@ public class Menu {
 		//Depositando
         c1.depositar(5000.0f);
 		c1.visualizar();
-
+		*/ // Teste retirado dado classe conta ser abstrata
+		
+		
+		// Iniciando testes das classes Corrente e Poupança
+		// Teste da Classe Conta Corrente
+		ContaCorrente cc1 = new ContaCorrente(2, 123, 1, "José da Silva", 0.0f, 1000.0f);
+		cc1.visualizar();
+		cc1.sacar(12000.0f);
+		cc1.visualizar();
+		cc1.depositar(5000.0f);
+		cc1.visualizar();
+				
+		// Teste da Classe Conta Poupança
+		ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "Maria dos Santos", 100000.0f, 15);
+		cp1.visualizar();
+		cp1.sacar(1000.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
+		// Finalizando testes das classes Corrente e Poupança
+		
 
 		while (true) {
 
