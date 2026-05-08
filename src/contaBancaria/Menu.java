@@ -157,14 +157,23 @@ public class Menu {
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+				
+				sacar();
+				
 				keyPress();
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
+				
+				depositar();
+				
 				keyPress();
 				break;
 			case 8:
 				System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+				
+				transferir();
+				
 				keyPress();
 				break;
 			default:
@@ -312,6 +321,42 @@ public class Menu {
 		else {
 			System.out.println("\nOperação cancelada.");
 		}
+	}
+	
+	private static void sacar() {
+		
+		System.out.println("Digite o número da conta:");
+		int numero = leia.nextInt();
+		
+		System.out.println("Digite o valor do saque:");
+		float valor = leia.nextFloat();
+		
+		contaController.sacar(numero, valor);
+	}
+	
+	private static void depositar() {
+		
+		System.out.println("Digite o número da conta:");
+		int numero = leia.nextInt();
+		
+		System.out.println("Digite o valor do depósito:");
+		float valor = leia.nextFloat();
+		
+		contaController.depositar(numero, valor);
+	}
+	
+	private static void transferir() {
+		
+		System.out.println("Digite o número da conta de Origem:");
+		int numeroOrigem = leia.nextInt();
+		
+		System.out.println("Digite o número da conta de Destino:");
+		int numeroDestino = leia.nextInt();
+		
+		System.out.println("Digite o valor da transferência:");
+		float valor = leia.nextFloat();
+		
+		contaController.transferir(numeroOrigem, numeroDestino, valor);
 	}
 	
 
