@@ -11,7 +11,7 @@ import contaBancaria.repository.ContaRepository;
 public class ContaController implements ContaRepository {
 	
 	private List<Conta> listaContas = new ArrayList<Conta>();
-	int num = 0;
+	int numero = 0;
 	@Override
 	public void listarTodas() {
 		for (var conta : listaContas) {
@@ -25,19 +25,44 @@ public class ContaController implements ContaRepository {
 		System.out.printf("A conta número %d foi criada com sucesso!%n", conta.getNumero());
 		
 	}
+	//CRUD parte2
 	@Override
 	public void procurarPorNumero(int numero) {
-		// TODO Auto-generated method stub
+		var conta = buscarNaCollection(numero);
+		
+		if (conta != null) {
+			conta.visualizar();
+		}
+		else {
+			System.out.printf("A Conta número: %d não foi encontrada!%n", numero);
+		}
 		
 	}
 	@Override
 	public void atualizar(Conta conta) {
-		// TODO Auto-generated method stub
+		var buscaConta = buscarNaCollection(conta.getNumero());
+		
+		if(buscaConta != null) {
+			listaContas.set(listaContas.indexOf(buscaConta), conta);
+			System.out.printf("A conta número %d foi atualizada com sucesso!%n", conta.getNumero());
+		}
+		else {
+			System.out.printf("A Conta número: %d não foi encontrada!%n", numero);
+		}
 		
 	}
 	@Override
 	public void deletar(int numero) {
-		// TODO Auto-generated method stub
+		var conta  = buscarNaCollection(numero);
+		
+		if (conta != null) {
+			if(listaContas.remove(conta) == true) {
+				System.out.printf("A conta número: %d foi deletada com sucesso!%n", numero);
+			}
+		}
+		else {
+			System.out.printf("A conta número: %d não foi encontrada!%n", numero);
+		}
 		
 	}
 	@Override
@@ -59,7 +84,7 @@ public class ContaController implements ContaRepository {
 	
 	//Adicionando ferramentas auxiliares às funções (Gerado após o projeto final Bloco 1)
 	public int gerarNumero() {
-		return ++ num;
+		return ++ numero;
 	}
 
 	public Conta buscarNaCollection(int numero) {
@@ -68,6 +93,7 @@ public class ContaController implements ContaRepository {
 				return conta;
 			}
 		}
+		
 		return null;
 	}
 
